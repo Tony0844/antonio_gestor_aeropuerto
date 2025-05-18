@@ -19,6 +19,8 @@ vuelos = [
 ]
 
 
+#Funciones obligatorias
+
 # Terminado
 def clear_terminal():
     if os.name == "nt":  
@@ -90,8 +92,9 @@ def nuevo_vuelo(vuelos, aeropuertos):
 
 # Terminado    
 def listar_vuelos(vuelos):
-    for vuelo in vuelos:
-        print(Fore.YELLOW  + f"{vuelo['origen']} => {vuelo['destino']} -- KM:{None}")
+    
+    for i,vuelo in enumerate(vuelos, start=1):
+        print(Fore.YELLOW  + f"{i}.{vuelo['origen']} => {vuelo['destino']} -- KM:{None}")
 
 # Terminado
 def buscar_por_aeropuerto(vuelos):
@@ -108,3 +111,21 @@ def buscar_por_aeropuerto(vuelos):
             print(Fore.YELLOW + f"{i['origen']} => {i['destino']} -- Km: {None}")
     else:
         print(f"No se encontraron vuelos con el código {codigo_a_buscar}")
+
+
+# Funciones opcionales
+
+def editar_eliminar_vuelos(vuelos):
+    for n,i in enumerate(vuelos):
+        print(Fore.YELLOW  + f"{n}. {i['origen']} => {i['destino']} -- KM:{None}")
+
+
+    editar = input("¿Que quieres hacer, editar o eliminar?: ").lower()
+    if editar == "eliminar":
+        vuelo_a_eliminar = int(input("¿Que vuelo quieres eliminar?: "))
+        if 0 <= vuelo_a_eliminar < len(vuelos):
+            del vuelos[vuelo_a_eliminar]
+            for i in vuelos:
+                print(Fore.YELLOW  + f"{n}. {i['origen']} => {i['destino']} -- KM:{None}")
+        else:
+            print(Fore.RED + "Índice no válido")
