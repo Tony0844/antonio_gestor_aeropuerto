@@ -5,11 +5,12 @@ import util
 if system("cls") !=0: system("clear")
 init(autoreset=True)
 
-# Retos opcionales
+
+                                                                # Retos opcionales
 # Editar o eliminar vuelos
 # Guardar / cargar aeropurtos y vuelos 'JSON'
 # Mostrar estadisticas (vuelo mas largo, promedio de km)
-# Colores en la 'CLI' usadno el modulo colorama 
+# Colores en la 'CLI' usadno el modulo colorama -- Terminado
 
 
 
@@ -18,9 +19,16 @@ while True:
     print(Fore.BLUE + "_____________________   _______________   __________________")
     print(Fore.BLUE + "||1-Añadir aeropuerto || 2-Añadir vuelo || 3-Listar vuelos||")
     print(Fore.BLUE + "---------------------   ---------------   ------------------")
-    print(Fore.BLUE + "_________________________________  __________")
-    print(Fore.BLUE + "||4-Buscar vuelos por aeropuerto || 5-Salir||")
-    print(Fore.BLUE + "---------------------------------  ----------")
+    print(Fore.BLUE + "_________________________________  ___________________________")
+    print(Fore.BLUE + "||4-Buscar vuelos por aeropuerto ||5-Editar o eliminar vuelos|| ")
+    print(Fore.BLUE + "---------------------------------  ---------------------------")
+    print(Fore.BLUE + "__________________________________________  ________________________")
+    print(Fore.BLUE + "||6-Guardar / cargar aeropuertos y vuelos || 7-Mostrar estadísticas||")
+    print(Fore.BLUE + "------------------------------------------  ------------------------")
+    print(Fore.BLUE + "___________")
+    print(Fore.BLUE + "||8-Salir||")
+    print(Fore.BLUE + "-----------")
+
     op = int(input(Fore.WHITE + "Opción: "))
     if op == 1: # 1 opción
         util.nuevo_aeropuerto(util.aeropuertos)
@@ -36,10 +44,19 @@ while True:
         sleep(2)
         print("\n")
 
-    elif op == 4: # 3 opción
+    elif op == 4: # 4 opción
         util.buscar_por_aeropuerto(util.vuelos)
 
-    elif op == 5: #5 opción
+    elif op == 5: # 5 opción
+        util.editar_eliminar_vuelos(util.vuelos)
+
+    elif op == 6: # 6 opción
+        pass
+
+    elif op ==7: # 7 opción
+        pass
+
+    elif op == 8: #8 opción
         util.clear_terminal() #Limpia la terminal
         print("Cerrando gestor.")
         sleep(0.5)
