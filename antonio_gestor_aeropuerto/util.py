@@ -123,9 +123,40 @@ def editar_eliminar_vuelos(vuelos):
     editar = input("¿Que quieres hacer, editar o eliminar?: ").lower()
     if editar == "eliminar":
         vuelo_a_eliminar = int(input("¿Que vuelo quieres eliminar?: "))
-        if 0 <= vuelo_a_eliminar < len(vuelos):
+        if 0 <= vuelo_a_eliminar < len(vuelos): # Verifica si el numero que ha dado esta dentro de el numero de indices que hay
             del vuelos[vuelo_a_eliminar]
-            for i in vuelos:
+            print(Fore.GREEN + f"El vuelo de a se ha eliminado correctamente")
+            for n,i in enumerate(vuelos):
                 print(Fore.YELLOW  + f"{n}. {i['origen']} => {i['destino']} -- KM:{None}")
         else:
             print(Fore.RED + "Índice no válido")
+    elif editar == "editar":
+        vuelo_a_editar = int(input("¿Que vuelo quieres editar?: "))
+        if 0 <= vuelo_a_editar < len(vuelos): # Verifica si el numero que ha dado esta dentro de el numero de indices que hay
+            origen_o_destino = input("¿Origen o destino?: ").lower()
+
+            if origen_o_destino == "origen": # Detecta que parte del vuelo quiere editar Origen/Destino
+                while True:
+                    origen_nuevo = input("Codigo IATA del nuevo origen: ")
+                    if origen_nuevo.isupper() and len(origen_nuevo) == 3 and origen_nuevo.isalpha():# Verifica si el código que ha dado el usuario cumple los requisitos del codigo IATA
+                        vuelos[vuelo_a_editar]['origen'] = origen_nuevo
+                        print(Fore.CYAN + "Lista de vuelos actualizada: ")
+                        break
+                    else:
+                        print(Fore.RED + "Error: El codigo debe de estar en mayusculas y contener 3 letras")
+
+                for n, i in enumerate(vuelos):
+                    print(Fore.MAGENTA + f"{n}. {i['origen']} => {i['destino']} -- Km:{None}")
+            
+            elif origen_o_destino == "destino":
+                while True:
+                    destino_nuevo = input("Codigo IATA del nuevo destino: ")
+                    if destino_nuevo.isupper() and len(destino_nuevo) == 3 and destino_nuevo.isalpha(): #Verifica si el código que ha dado el usuario cumple los requisitos del codigo IATA
+                        vuelos[vuelo_a_editar]['destino'] = destino_nuevo
+                        print(Fore.CYAN + "Lista de vuelos actualizadas: ")
+                        break
+                    else:
+                        print(Fore.RED + "Error: El codigo debe de estar en mayusculas y contener 3 letras")
+                
+                for n, i in enumerate(vuelos):
+                    print(Fore.MAGENTA + f"{n}. {i['origen']} => {i['destino']} -- Km:{None}")
