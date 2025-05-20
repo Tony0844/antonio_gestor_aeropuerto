@@ -1,4 +1,5 @@
 import os
+import json
 from colorama import init, Fore, Style
 from time import sleep
 
@@ -17,6 +18,13 @@ vuelos = [
     {"origen": "BCN", "destino": "MAD"},
     {"origen": "SVQ", "destino": "AGP"}
 ]
+
+
+                                                                # Retos opcionales
+# Editar o eliminar vuelos -- Terminado
+# Guardar / cargar aeropurtos y vuelos 'JSON'
+# Mostrar estadisticas (vuelo mas largo, promedio de km)
+# Colores en la 'CLI' usadno el modulo colorama -- Terminado
 
 
 #Funciones obligatorias
@@ -115,13 +123,15 @@ def buscar_por_aeropuerto(vuelos):
 
 # Funciones opcionales
 
+# Terminado
 def editar_eliminar_vuelos(vuelos):
+
     for n,i in enumerate(vuelos):
         print(Fore.YELLOW  + f"{n}. {i['origen']} => {i['destino']} -- KM:{None}")
 
 
     editar = input("¿Que quieres hacer, editar o eliminar?: ").lower()
-    if editar == "eliminar":
+    if editar == "eliminar":    # Opcion elegida = opción
         vuelo_a_eliminar = int(input("¿Que vuelo quieres eliminar?: "))
         if 0 <= vuelo_a_eliminar < len(vuelos): # Verifica si el numero que ha dado esta dentro de el numero de indices que hay
             del vuelos[vuelo_a_eliminar]
@@ -130,7 +140,7 @@ def editar_eliminar_vuelos(vuelos):
                 print(Fore.YELLOW  + f"{n}. {i['origen']} => {i['destino']} -- KM:{None}")
         else:
             print(Fore.RED + "Índice no válido")
-    elif editar == "editar":
+    elif editar == "editar":    # Opcion elegida = editar
         vuelo_a_editar = int(input("¿Que vuelo quieres editar?: "))
         if 0 <= vuelo_a_editar < len(vuelos): # Verifica si el numero que ha dado esta dentro de el numero de indices que hay
             origen_o_destino = input("¿Origen o destino?: ").lower()
@@ -160,3 +170,20 @@ def editar_eliminar_vuelos(vuelos):
                 
                 for n, i in enumerate(vuelos):
                     print(Fore.MAGENTA + f"{n}. {i['origen']} => {i['destino']} -- Km:{None}")
+
+
+def guardar_datos(aeropuertos, vuelos, archivo="datos.json"):
+    datos = {
+        "aeropuertos": aeropuertos,
+        "vuelos": vuelos
+    }
+    with open(archivo, "w", encoding="utf-8") as f:
+        json.dump(datos, f, indent=4)
+
+def cargar_datos(archivo="datos.json"):
+    try:
+        with open(archivo, "r", encoding="utf-8") as f:
+            datos = json.load(f)
+            return datos.get("aeropuertos", []), datos.get("vuelos", [])
+    except FileNotFoundError:
+        return [], []
