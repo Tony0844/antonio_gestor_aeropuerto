@@ -22,7 +22,7 @@ vuelos = [
 
                                                                 # Retos opcionales
 # Editar o eliminar vuelos -- Terminado
-# Guardar / cargar aeropurtos y vuelos 'JSON'
+# Guardar / cargar aeropurtos y vuelos 'JSON' -- Terminado
 # Mostrar estadisticas (vuelo mas largo, promedio de km)
 # Colores en la 'CLI' usadno el modulo colorama -- Terminado
 
