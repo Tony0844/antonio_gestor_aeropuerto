@@ -1,18 +1,10 @@
 from os import system
 from time import sleep
 from colorama import init, Fore, Style
+from util import guardar_datos, cargar_datos
 import util
 if system("cls") !=0: system("clear")
 init(autoreset=True)
-
-
-                                                                # Retos opcionales
-# Editar o eliminar vuelos
-# Guardar / cargar aeropurtos y vuelos 'JSON'
-# Mostrar estadisticas (vuelo mas largo, promedio de km)
-# Colores en la 'CLI' usadno el modulo colorama -- Terminado
-
-
 
 
 while True:
@@ -49,9 +41,21 @@ while True:
 
     elif op == 5: # 5 opción
         util.editar_eliminar_vuelos(util.vuelos)
-
+        guardar_datos(util.aeropuertos, util.vuelos)
     elif op == 6: # 6 opción
-        pass
+        print("1. Guardar datos")
+        print("2. Cargar datos")
+        opcion_sec = input("Elige una opción: ")
+
+        if opcion_sec == "1":
+            guardar_datos(util.aeropuertos, util.vuelos)
+            print("Datos guardados correctamente.")
+        elif opcion_sec == "2":
+            util.aeropuertos, util.vuelos = cargar_datos()
+            print("Datos cargados correctamente.")
+        else:
+            print("Opción inválida.")
+        sleep(1)
 
     elif op ==7: # 7 opción
         pass
@@ -68,4 +72,3 @@ while True:
         sleep(0.5)
         util.clear_terminal()
         break
-
