@@ -1,0 +1,42 @@
+{
+    "aeropuertos": [
+        {
+            "codigo": "MAD",
+            "nombre": "Aeropuerto Adolfo Suarez Madrid-Barajas",
+            "ciudad": "Madrid"
+        },
+        {
+            "codigo": "BCN",
+            "nombre": "Aeropuerto Josep Tarradellas Barcelona-El Prat",
+            "ciudad": "Barcelona"
+        },
+        {
+            "codigo": "AGP",
+            "nombre": "Aeropuerto de Mlaga-Costa del Sol",
+            "ciudad": "Mlaga"
+        },
+        {
+            "codigo": "SVQ",
+            "nombre": "Aeropuerto de Sevilla",
+            "ciudad": "Sevilla"
+        }
+    ],
+    "vuelos": [
+        {
+            "origen": "MAD",
+            "destino": "BCN"
+        },
+        {
+            "origen": "AGP",
+            "destino": "SVQ"
+        },
+        {
+            "origen": "BCN",
+            "destino": "MAD"
+        },
+        {
+            "origen": "SVQ",
+            "destino": "AGP"
+        }
+    ]
+}
